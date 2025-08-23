@@ -1,0 +1,21 @@
+package controller
+
+import (
+	"golang-api-contact/response"
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
+
+type HealthController struct{}
+
+func NewHealthController() *HealthController {
+	return &HealthController{}
+}
+
+func (h *HealthController) HealthCheck(c *gin.Context) {
+	c.JSON(http.StatusOK, response.APIResponse{
+		Code: "SUCCESS",
+		Message: "Api is Running",
+	})
+}
