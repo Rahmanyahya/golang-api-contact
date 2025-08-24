@@ -4,11 +4,11 @@ import (
 	"golang-api-contact/models"
 
 	"time"
+
 	"gorm.io/gorm"
 )
 
 type ContactRepository interface {
-
 	Create(contact *models.Contact) error
 
 	FindAll() ([]models.Contact, error)
@@ -18,7 +18,6 @@ type ContactRepository interface {
 	Update(contact *models.Contact) error
 
 	Delete(contact *models.Contact) error
-
 }
 
 type contactRepository struct {
@@ -34,9 +33,9 @@ func (r *contactRepository) Create(contact *models.Contact) error {
 }
 
 func (r *contactRepository) FindAll() ([]models.Contact, error) {
-	var contacts []models.Contact;
+	var contacts []models.Contact
 
-	err := r.db.Where("deleted_at = ?", "0000-00-00 00:00:00").Find(&contacts).Error
+	err := r.db.Where("deletedAt = ?", "0000-00-00 00:00:00").Find(&contacts).Error
 
 	return contacts, err
 }
@@ -44,7 +43,7 @@ func (r *contactRepository) FindAll() ([]models.Contact, error) {
 func (r *contactRepository) FindById(id uint) (*models.Contact, error) {
 	var contact models.Contact
 
-	err := r.db.Where(`id = ? AND deleted_at = ?`, id, "0000-000-00 00:00:00").First(&contact).Error
+	err := r.db.Where(`id = ? AND deletedAt = ?`, id, "0000-000-00 00:00:00").First(&contact).Error
 
 	return &contact, err
 }

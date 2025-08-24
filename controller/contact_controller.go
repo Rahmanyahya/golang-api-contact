@@ -86,7 +86,7 @@ func (h *ContactController) GetContact(c *gin.Context) {
 	contact, err := h.service.GetContactById(uint(id));
 	if err != nil {
 		c.JSON(http.StatusNotFound, response.APIResponse{
-			Code: "SUCCESS",
+			Code: "NOT_FOUND",
 			Message: "Contact not found",
 			Data: nil,	
 		})
