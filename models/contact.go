@@ -6,7 +6,7 @@ import (
 
 type Contact struct {
 
-	ID uint `gorm:"primarykey;column:id;type:BIGINT UNSINED AUTO_INCREMENT"`
+	ID uint `gorm:"primarykey;column:id;type:BIGINT UNSIGNED AUTO_INCREMENT"`
 
 	FullName string `gorm:"column:full_name;type:VARCHAR(10);not null"`
 
